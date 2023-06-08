@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class EmailSendServiceTest {
 
 //    @Autowired
-//    private EmailSendService emailSendService;
+//    private MailgunClient emailSendService;
 //
 //    @Test
 //    public void EmailTest() {
