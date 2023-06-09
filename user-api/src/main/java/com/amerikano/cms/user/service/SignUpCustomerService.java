@@ -1,6 +1,6 @@
 package com.amerikano.cms.user.service;
 
-import com.amerikano.cms.user.domain.CustomerRepository;
+import com.amerikano.cms.user.domain.repository.CustomerRepository;
 import com.amerikano.cms.user.domain.SignUpForm;
 import com.amerikano.cms.user.domain.model.Customer;
 import com.amerikano.cms.user.exception.CustomException;
