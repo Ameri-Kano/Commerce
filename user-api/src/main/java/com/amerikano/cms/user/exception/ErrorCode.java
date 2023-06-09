@@ -17,8 +17,7 @@ public enum ErrorCode {
 
     ALREADY_VERIFIED(HttpStatus.BAD_REQUEST, "이미 인증이 완료된 회원입니다."),
 
-    NOT_ENOUGH_BALANCE(HttpStatus.BAD_REQUEST, "잔액이 부족합니다.")
-    ;
+    NOT_ENOUGH_BALANCE(HttpStatus.BAD_REQUEST, "잔액이 부족합니다.");
 
     private final HttpStatus httpStatus;
     private final String detail;

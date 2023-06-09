@@ -8,9 +8,9 @@ import org.apache.tomcat.util.codec.binary.Base64;
 
 public class Aes256Util {
 
-    public static String alg = "AES/CBC/PKCS5Padding";
     private static final String KEY = "AMERIKANO_IS_AMERIKANO_KEY123456";
     private static final String IV = KEY.substring(0, 16);
+    public static String alg = "AES/CBC/PKCS5Padding";
 
     public static String encrypt(String text) {
         try {
