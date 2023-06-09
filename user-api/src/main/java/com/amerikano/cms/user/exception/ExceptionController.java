@@ -1,6 +1,5 @@
 package com.amerikano.cms.user.exception;
 
-import javax.servlet.ServletException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
@@ -18,13 +17,6 @@ public class ExceptionController {
         log.warn("api Exception : {}", c.getErrorCode());
         return ResponseEntity.badRequest()
             .body(new ExceptionResponse(c.getMessage(), c.getErrorCode()));
-    }
-
-    @ExceptionHandler({ServletException.class})
-    public ResponseEntity<String> handleServletException(final ServletException e) {
-        log.warn("api Exception : {}", e.getMessage());
-        return ResponseEntity.badRequest()
-            .body("잘못된 인증 시도.");
     }
 
     @Getter

@@ -4,7 +4,7 @@ import com.amerikano.cms.user.domain.customer.CustomerDto;
 import com.amerikano.cms.user.domain.model.Customer;
 import com.amerikano.cms.user.exception.CustomException;
 import com.amerikano.cms.user.exception.ErrorCode;
-import com.amerikano.cms.user.service.CustomerService;
+import com.amerikano.cms.user.service.customer.CustomerService;
 import com.amerikano.domain.config.JwtAuthenticationProvider;
 import com.amerikano.domain.domain.common.UserVo;
 import lombok.RequiredArgsConstructor;

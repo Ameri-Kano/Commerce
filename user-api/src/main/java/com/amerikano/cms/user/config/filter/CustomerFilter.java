@@ -1,6 +1,6 @@
 package com.amerikano.cms.user.config.filter;
 
-import com.amerikano.cms.user.service.CustomerService;
+import com.amerikano.cms.user.service.customer.CustomerService;
 import com.amerikano.domain.config.JwtAuthenticationProvider;
 import com.amerikano.domain.domain.common.UserVo;
 import java.io.IOException;

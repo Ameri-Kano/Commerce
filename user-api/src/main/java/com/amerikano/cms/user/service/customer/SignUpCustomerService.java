@@ -1,4 +1,4 @@
-package com.amerikano.cms.user.service;
+package com.amerikano.cms.user.service.customer;
 
 import com.amerikano.cms.user.domain.repository.CustomerRepository;
 import com.amerikano.cms.user.domain.SignUpForm;

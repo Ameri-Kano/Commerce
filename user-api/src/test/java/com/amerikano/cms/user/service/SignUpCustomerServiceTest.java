@@ -3,6 +3,7 @@ package com.amerikano.cms.user.service;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.amerikano.cms.user.domain.SignUpForm;
+import com.amerikano.cms.user.service.customer.SignUpCustomerService;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
