@@ -3,43 +3,63 @@ POST http://localhost:8081/signup/customer
 Content-Type: application/json
 
 {
-  "birth": "1998-02-13",
-  "email": "amerikanodevv@gmail.com",
-  "name": "Yeok",
+  "birth": "2023-06-10",
+  "email": "example@gmail.com",
+  "name": "name",
   "password": "password",
   "phone": "01012345678"
 }
 
 ### 이메일 인증 (고객)
-GET http://localhost:8081/signup/customer/verify?email=amerikanodevv@gmail.com&code=0enurkn8nx
+GET http://localhost:8081/signup/customer/verify?email=example@gmail.com&code=verifycode
 
 ### 로그인 (고객)
 POST http://localhost:8081/signin/customer
 Content-Type: application/json
 
 {
-  "email": "amerikanodevv@gmail.com",
+  "email": "example@gmail.com",
   "password": "password"
 }
 
 ### 회원 정보 조회 (고객)
 GET http://localhost:8081/customer/getInfo
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqcDgrSHJQZnRWbThWNEc3VnRUbHM5MytLaS9lclNESnVBcC8vUkxqUW9rPSIsImp0aSI6IjN5cG1ZSjNvdUdUNUZWbHY5RUJiZVE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODYzMzAzMjEsImV4cCI6MTY4NjQxNjcyMX0.Y3ESkTlvBTQ1_adeigIN8Cjww3D4DhUhfgOCDv2sB0U
+X-AUTH-TOKEN: JWT_TOKEN
 
 ### 잔액 변경 (고객)
 POST http://localhost:8081/customer/balance
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqcDgrSHJQZnRWbThWNEc3VnRUbHM5MytLaS9lclNESnVBcC8vUkxqUW9rPSIsImp0aSI6IjN5cG1ZSjNvdUdUNUZWbHY5RUJiZVE9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODYzMzAzMjEsImV4cCI6MTY4NjQxNjcyMX0.Y3ESkTlvBTQ1_adeigIN8Cjww3D4DhUhfgOCDv2sB0U
+X-AUTH-TOKEN: JWT_TOKEN
 
 {
   "from": "server",
   "message": "머니 충전",
-  "money": 50000
+  "money": 10000
 }
 
 ########################
 
 ### 회원가입 (셀러)
+POST http://localhost:8081/signup/seller
+Content-Type: application/json
+
+{
+  "birth": "2023-06-10",
+  "email": "example@gmail.com",
+  "name": "name",
+  "password": "password",
+  "phone": "01012345678"
+}
+
+### 이메일 인증 (셀러)
+GET http://localhost:8081/signup/seller/verify?email=example@gmail.com&code=verifycode
 
 ### 로그인 (셀러)
+POST http://localhost:8081/signin/seller
+Content-Type: application/json
+
+{
+  "email": "example@gmail.com",
+  "password": "password"
+}
