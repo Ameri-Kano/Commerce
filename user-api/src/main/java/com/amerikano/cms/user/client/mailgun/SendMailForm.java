@@ -1,6 +1,10 @@
 package com.amerikano.cms.user.client.mailgun;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -8,6 +12,7 @@ import lombok.*;
 @Builder
 @Data
 public class SendMailForm {
+
     private String from;
     private String to;
     private String subject;
