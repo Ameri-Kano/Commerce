@@ -32,7 +32,7 @@ public class SignUpApplication {
     }
 
     public String customerSignUp(SignUpForm form) {
-        if (sellerService.isEmailExist(form.getEmail())) {
+        if (signUpCustomerService.isEmailExist(form.getEmail())) {
             throw new CustomException(ErrorCode.ALREADY_REGISTERED_USER);
         } else {
             Customer c = signUpCustomerService.signUp(form);
@@ -46,7 +46,7 @@ public class SignUpApplication {
                 .build();
             log.info(mailgunClient.sendEmail(sendMailForm).getBody());
 
-            sellerService.changeSellerValidateEmail(c.getId(), code);
+            signUpCustomerService.changeCustomerValidateEmail(c.getId(), code);
             return "회원 가입에 성공하였습니다.";
         }
     }
@@ -79,7 +79,7 @@ public class SignUpApplication {
         StringBuilder builder = new StringBuilder();
         return builder.append("Hello ").append(name)
             .append("! Please Click Link for verification.\n\n")
-            .append("http://localhost:8081/signup/"+type+"/verify/?email=")
+            .append("http://localhost:8081/signup/"+type+"/verify?email=")
             .append(email)
             .append("&code=")
             .append(code).toString();
