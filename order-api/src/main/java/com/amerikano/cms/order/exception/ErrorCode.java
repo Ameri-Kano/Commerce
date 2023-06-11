@@ -7,7 +7,8 @@ import org.springframework.http.HttpStatus;
 @RequiredArgsConstructor
 @Getter
 public enum ErrorCode {
-    ALREADY_REGISTERED_USER(HttpStatus.BAD_REQUEST, "이미 가입한 회원입니다.");
+    NOT_FOUND_PRODUCT(HttpStatus.BAD_REQUEST, "상품을 찾을 수 없습니다."),
+    SAVE_ITEM_NAME(HttpStatus.BAD_REQUEST, "아이템 명이 중복되어 있습니다.");
 
     private final HttpStatus httpStatus;
     private final String detail;
