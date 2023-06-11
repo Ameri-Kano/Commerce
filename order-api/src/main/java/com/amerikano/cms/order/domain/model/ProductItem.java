@@ -1,7 +1,6 @@
 package com.amerikano.cms.order.domain.model;
 
 import com.amerikano.cms.order.domain.product.AddProductItemForm;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,7 +39,7 @@ public class ProductItem extends BaseEntity {
 
     private Integer count;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
