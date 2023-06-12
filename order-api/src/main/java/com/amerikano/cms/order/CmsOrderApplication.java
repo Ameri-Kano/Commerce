@@ -12,8 +12,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaAuditing
 //@ServletComponentScan
 @SpringBootApplication
-public class OrderApplication {
+public class CmsOrderApplication {
     public static void main(String[] args) {
-        SpringApplication.run(OrderApplication.class, args);
+        SpringApplication.run(CmsOrderApplication.class, args);
     }
 }

@@ -33,7 +33,7 @@ public class CartApplication {
         }
         Cart cart = cartService.getCart(customerId);
 
-        if (cart != null && !addAble(cart, product, form)) {
+        if (!addAble(cart, product, form)) {
             throw new CustomException(ErrorCode.ITEM_COUNT_NOT_ENOUGH);
         }
 
@@ -43,6 +43,7 @@ public class CartApplication {
 
     public Cart getCart(Long customerId) {
         Cart cart = refreshCart(cartService.getCart(customerId));
+        cartService.putCart(cart.getCustomerId(), cart);
         Cart returnCart = new Cart();
         returnCart.setCustomerId(customerId);
         returnCart.setProducts(cart.getProducts());
@@ -70,7 +71,7 @@ public class CartApplication {
      * 2. 상품의 가격이나 수량 변동
      * 하는 경우를 위해 장바구니 목록 새로고침
      */
-    private Cart refreshCart(Cart cart) {
+    protected Cart refreshCart(Cart cart) {
         // 1. 상품이나 아이템의 정보가 변경되었는지 체크하고 알맞은 알람 제공
         // 2. 상품의 수량, 가격을 임의로 변경
         Map<Long, Product> productMap = productSearchService.getListByProductIds(
@@ -145,7 +146,6 @@ public class CartApplication {
                 cart.addMessage(stringBuilder.toString());
             }
         }
-        cartService.putCart(cart.getCustomerId(), cart);
         return cart;
     }
 
