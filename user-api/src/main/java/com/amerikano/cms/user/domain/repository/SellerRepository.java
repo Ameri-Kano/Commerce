@@ -1,8 +1,9 @@
 package com.amerikano.cms.user.domain.repository;
 
 import com.amerikano.cms.user.domain.model.Seller;
-import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
 
 public interface SellerRepository extends JpaRepository<Seller, Long> {
 

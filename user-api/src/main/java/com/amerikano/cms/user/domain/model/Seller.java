@@ -1,20 +1,13 @@
 package com.amerikano.cms.user.domain.model;
 
 import com.amerikano.cms.user.domain.SignUpForm;
+import lombok.*;
+import org.hibernate.envers.AuditOverride;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Locale;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.envers.AuditOverride;
 
 @Entity
 @Getter
@@ -42,12 +35,12 @@ public class Seller extends BaseEntity {
 
     public static Seller from(SignUpForm form) {
         return Seller.builder()
-            .email(form.getEmail().toLowerCase(Locale.ROOT))
-            .password(form.getPassword())
-            .name(form.getName())
-            .birth(form.getBirth())
-            .phone(form.getPhone())
-            .verify(false)
-            .build();
+                .email(form.getEmail().toLowerCase(Locale.ROOT))
+                .password(form.getPassword())
+                .name(form.getName())
+                .birth(form.getBirth())
+                .phone(form.getPhone())
+                .verify(false)
+                .build();
     }
 }

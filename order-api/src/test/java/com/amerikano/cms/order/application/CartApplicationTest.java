@@ -14,7 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 class CartApplicationTest {
@@ -24,6 +25,27 @@ class CartApplicationTest {
     private ProductService productService;
     @Autowired
     private ProductRepository productRepository;
+
+    private static AddProductForm makeProductForm(String name, String desc, int itemCount) {
+        List<AddProductItemForm> itemForms = new ArrayList<>();
+        for (int i = 0; i < itemCount; i++) {
+            itemForms.add(makeProductItemForm(null, name + i));
+        }
+        return AddProductForm.builder()
+                .name(name)
+                .description(desc)
+                .items(itemForms)
+                .build();
+    }
+
+    private static AddProductItemForm makeProductItemForm(Long productId, String name) {
+        return AddProductItemForm.builder()
+                .productId(productId)
+                .name(name)
+                .price(10000)
+                .count(10)
+                .build();
+    }
 
     @Test
     void addTest() {
@@ -62,12 +84,12 @@ class CartApplicationTest {
                         .build();
 
         return AddProductCartForm.builder()
-                        .id(p.getId())
-                        .sellerId(p.getSellerId())
-                        .name(p.getName())
-                        .description(p.getDescription())
-                        .items(List.of(productItem))
-                        .build();
+                .id(p.getId())
+                .sellerId(p.getSellerId())
+                .name(p.getName())
+                .description(p.getDescription())
+                .items(List.of(productItem))
+                .build();
     }
 
     Product addProduct() {
@@ -75,27 +97,6 @@ class CartApplicationTest {
         AddProductForm form = makeProductForm("나이키", "운동화", 3);
 
         return productService.addProduct(sellerId, form);
-    }
-
-    private static AddProductForm makeProductForm(String name, String desc, int itemCount) {
-        List<AddProductItemForm> itemForms = new ArrayList<>();
-        for (int i=0; i<itemCount; i++) {
-            itemForms.add(makeProductItemForm(null, name+i));
-        }
-        return AddProductForm.builder()
-                .name(name)
-                .description(desc)
-                .items(itemForms)
-                .build();
-    }
-
-    private static AddProductItemForm makeProductItemForm(Long productId, String name) {
-        return AddProductItemForm.builder()
-                .productId(productId)
-                .name(name)
-                .price(10000)
-                .count(10)
-                .build();
     }
 
 }

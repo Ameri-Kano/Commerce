@@ -39,11 +39,11 @@ public class SignUpApplication {
 
             String code = getRandomCode();
             SendMailForm sendMailForm = SendMailForm.builder()
-                .from("test@gmail.com")
-                .to(form.getEmail())
-                .subject("Verification Email!")
-                .text(getVerificationEmailBody(form.getEmail(), form.getName(), "customer", code))
-                .build();
+                    .from("test@gmail.com")
+                    .to(form.getEmail())
+                    .subject("Verification Email!")
+                    .text(getVerificationEmailBody(form.getEmail(), form.getName(), "customer", code))
+                    .build();
             log.info(mailgunClient.sendEmail(sendMailForm).getBody());
 
             signUpCustomerService.changeCustomerValidateEmail(c.getId(), code);
@@ -59,11 +59,11 @@ public class SignUpApplication {
 
             String code = getRandomCode();
             SendMailForm sendMailForm = SendMailForm.builder()
-                .from("test@gmail.com")
-                .to(form.getEmail())
-                .subject("Verification Email!")
-                .text(getVerificationEmailBody(form.getEmail(), form.getName(), "seller", code))
-                .build();
+                    .from("test@gmail.com")
+                    .to(form.getEmail())
+                    .subject("Verification Email!")
+                    .text(getVerificationEmailBody(form.getEmail(), form.getName(), "seller", code))
+                    .build();
             log.info(mailgunClient.sendEmail(sendMailForm).getBody());
 
             sellerService.changeSellerValidateEmail(c.getId(), code);
@@ -78,10 +78,10 @@ public class SignUpApplication {
     private String getVerificationEmailBody(String email, String name, String type, String code) {
         StringBuilder builder = new StringBuilder();
         return builder.append("Hello ").append(name)
-            .append("! Please Click Link for verification.\n\n")
-            .append("http://localhost:8081/signup/" + type + "/verify?email=")
-            .append(email)
-            .append("&code=")
-            .append(code).toString();
+                .append("! Please Click Link for verification.\n\n")
+                .append("http://localhost:8081/signup/" + type + "/verify?email=")
+                .append(email)
+                .append("&code=")
+                .append(code).toString();
     }
 }

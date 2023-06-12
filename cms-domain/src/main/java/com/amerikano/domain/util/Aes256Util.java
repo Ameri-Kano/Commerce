@@ -1,10 +1,11 @@
 package com.amerikano.domain.util;
 
-import java.nio.charset.StandardCharsets;
+import org.apache.tomcat.util.codec.binary.Base64;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import org.apache.tomcat.util.codec.binary.Base64;
+import java.nio.charset.StandardCharsets;
 
 public class Aes256Util {
 
@@ -17,7 +18,7 @@ public class Aes256Util {
             Cipher cipher = Cipher.getInstance(alg);
             SecretKeySpec keySpec = new SecretKeySpec(KEY.getBytes(), "AES");
             IvParameterSpec ivParameterSpec = new IvParameterSpec(
-                IV.getBytes(StandardCharsets.UTF_8));
+                    IV.getBytes(StandardCharsets.UTF_8));
             cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivParameterSpec);
 
             byte[] encrypted = cipher.doFinal(text.getBytes(StandardCharsets.UTF_8));
@@ -33,7 +34,7 @@ public class Aes256Util {
             Cipher cipher = Cipher.getInstance(alg);
             SecretKeySpec keySpec = new SecretKeySpec(KEY.getBytes(), "AES");
             IvParameterSpec ivParameterSpec = new IvParameterSpec(
-                IV.getBytes(StandardCharsets.UTF_8));
+                    IV.getBytes(StandardCharsets.UTF_8));
             cipher.init(Cipher.DECRYPT_MODE, keySpec, ivParameterSpec);
 
             byte[] decodedBytes = Base64.decodeBase64(cipherText);

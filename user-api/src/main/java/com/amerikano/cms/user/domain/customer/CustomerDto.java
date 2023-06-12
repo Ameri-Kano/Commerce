@@ -16,7 +16,7 @@ public class CustomerDto {
 
     public static CustomerDto from(Customer customer) {
         return new CustomerDto(customer.getId(), customer.getEmail(),
-            customer.getBalance() == null ? 0 : customer.getBalance());
+                customer.getBalance() == null ? 0 : customer.getBalance());
     }
 
 }

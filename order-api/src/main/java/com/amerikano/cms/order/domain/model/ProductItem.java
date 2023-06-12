@@ -1,19 +1,11 @@
 package com.amerikano.cms.order.domain.model;
 
 import com.amerikano.cms.order.domain.product.AddProductItemForm;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.envers.AuditOverride;
 import org.hibernate.envers.Audited;
+
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -45,10 +37,10 @@ public class ProductItem extends BaseEntity {
 
     public static ProductItem of(Long sellerId, AddProductItemForm form) {
         return ProductItem.builder()
-            .sellerId(sellerId)
-            .name(form.getName())
-            .price(form.getPrice())
-            .count(form.getCount())
-            .build();
+                .sellerId(sellerId)
+                .name(form.getName())
+                .price(form.getPrice())
+                .count(form.getCount())
+                .build();
     }
 }

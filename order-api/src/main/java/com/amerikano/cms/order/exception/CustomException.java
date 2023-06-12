@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Getter
 public class CustomException extends RuntimeException {
 
+    private static final ObjectMapper mapper = new ObjectMapper();
     private final ErrorCode errorCode;
     private final int status;
-    private static final ObjectMapper mapper = new ObjectMapper();
 
     public CustomException(ErrorCode errorCode) {
         super(errorCode.getDetail());

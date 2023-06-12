@@ -1,23 +1,14 @@
 package com.amerikano.cms.order.domain.model;
 
 import com.amerikano.cms.order.domain.product.AddProductForm;
+import lombok.*;
+import org.hibernate.envers.AuditOverride;
+import org.hibernate.envers.Audited;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.envers.AuditOverride;
-import org.hibernate.envers.Audited;
 
 @Entity
 @Setter
@@ -45,11 +36,11 @@ public class Product extends BaseEntity {
 
     public static Product of(Long sellerId, AddProductForm form) {
         return Product.builder()
-            .sellerId(sellerId)
-            .name(form.getName())
-            .description(form.getDescription())
-            .productItems(form.getItems().stream()
-                .map((piForm) -> ProductItem.of(sellerId, piForm)).collect(Collectors.toList()))
-            .build();
+                .sellerId(sellerId)
+                .name(form.getName())
+                .description(form.getDescription())
+                .productItems(form.getItems().stream()
+                        .map((piForm) -> ProductItem.of(sellerId, piForm)).collect(Collectors.toList()))
+                .build();
     }
 }

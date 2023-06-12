@@ -21,6 +21,27 @@ class ProductServiceTest {
     @Autowired
     private ProductRepository productRepository;
 
+    private static AddProductForm makeProductForm(String name, String desc, int itemCount) {
+        List<AddProductItemForm> itemForms = new ArrayList<>();
+        for (int i = 0; i < itemCount; i++) {
+            itemForms.add(makeProductItemForm(null, name + i));
+        }
+        return AddProductForm.builder()
+                .name(name)
+                .description(desc)
+                .items(itemForms)
+                .build();
+    }
+
+    private static AddProductItemForm makeProductItemForm(Long productId, String name) {
+        return AddProductItemForm.builder()
+                .productId(productId)
+                .name(name)
+                .price(10000)
+                .count(1)
+                .build();
+    }
+
     @Test
     void addProductTest() {
         Long sellerId = 1L;
@@ -40,26 +61,5 @@ class ProductServiceTest {
         assertEquals(result.getProductItems().get(0).getName(), "나이키0");
         assertEquals(result.getProductItems().get(0).getPrice(), 10000);
         assertEquals(result.getProductItems().get(0).getCount(), 1);
-    }
-
-    private static AddProductForm makeProductForm(String name, String desc, int itemCount) {
-        List<AddProductItemForm> itemForms = new ArrayList<>();
-        for (int i=0; i<itemCount; i++) {
-            itemForms.add(makeProductItemForm(null, name+i));
-        }
-        return AddProductForm.builder()
-                .name(name)
-                .description(desc)
-                .items(itemForms)
-                .build();
-    }
-
-    private static AddProductItemForm makeProductItemForm(Long productId, String name) {
-        return AddProductItemForm.builder()
-                .productId(productId)
-                .name(name)
-                .price(10000)
-                .count(1)
-                .build();
     }
 }

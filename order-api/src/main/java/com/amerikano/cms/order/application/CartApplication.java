@@ -141,7 +141,7 @@ public class CartApplication {
                 }
 
                 if (tempMessages.size() == 1) {
-                    stringBuilder.setLength(stringBuilder.length()-1);
+                    stringBuilder.setLength(stringBuilder.length() - 1);
                 }
                 cart.addMessage(stringBuilder.toString());
             }

@@ -3,15 +3,12 @@ package com.amerikano.cms.user.config.filter;
 import com.amerikano.cms.user.service.customer.CustomerService;
 import com.amerikano.domain.config.JwtAuthenticationProvider;
 import com.amerikano.domain.domain.common.UserVo;
-import java.io.IOException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import lombok.RequiredArgsConstructor;
+
+import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
+import java.io.IOException;
 
 @WebFilter(urlPatterns = "/customer/*")
 @RequiredArgsConstructor
@@ -22,7 +19,7 @@ public class CustomerFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-        throws IOException, ServletException {
+            throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         String token = req.getHeader("X-AUTH-TOKEN");
 
@@ -31,7 +28,7 @@ public class CustomerFilter implements Filter {
         }
         UserVo vo = jwtAuthenticationProvider.getUserVo(token);
         customerService.findByIdAndEmail(vo.getId(), vo.getEmail()).orElseThrow(
-            () -> new ServletException("Invalid Access")
+                () -> new ServletException("Invalid Access")
         );
 
         chain.doFilter(request, response);

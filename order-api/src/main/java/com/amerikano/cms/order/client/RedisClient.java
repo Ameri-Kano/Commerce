@@ -16,8 +16,8 @@ import org.springframework.util.ObjectUtils;
 @Slf4j
 public class RedisClient {
 
-    private final RedisTemplate<String, Object> redisTemplate;
     private static final ObjectMapper mapper = new ObjectMapper();
+    private final RedisTemplate<String, Object> redisTemplate;
 
     public <T> T get(Long key, Class<T> classType) {
         return get(key.toString(), classType);

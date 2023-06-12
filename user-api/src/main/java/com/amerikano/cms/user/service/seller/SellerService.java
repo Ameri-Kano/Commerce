@@ -5,11 +5,12 @@ import com.amerikano.cms.user.domain.model.Seller;
 import com.amerikano.cms.user.domain.repository.SellerRepository;
 import com.amerikano.cms.user.exception.CustomException;
 import com.amerikano.cms.user.exception.ErrorCode;
-import java.time.LocalDateTime;
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -36,7 +37,7 @@ public class SellerService {
     @Transactional
     public void verifyEmail(String email, String code) {
         Seller seller = sellerRepository.findByEmail(email)
-            .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
 
         if (seller.isVerify()) {
             throw new CustomException(ErrorCode.ALREADY_VERIFIED);
